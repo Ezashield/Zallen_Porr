@@ -305,58 +305,6 @@
             }
         }
         setInterval(drawMatrix, 45);
-
-        // Terminal Scripting
-        const terminalOutput = document.getElementById('terminalOutput');
-        const terminalInput = document.getElementById('terminalInput');
-
-        function appendLine(text, colorClass = "text-gray-300") {
-            const p = document.createElement('p');
-            p.className = colorClass;
-            p.innerHTML = text;
-            terminalOutput.appendChild(p);
-            terminalOutput.scrollTop = terminalOutput.scrollHeight;
-        }
-
-        function handleCommand(event) {
-            event.preventDefault();
-            const cmd = terminalInput.value.trim().toLowerCase();
-            if (!cmd) return;
-
-            appendLine(`<span class="text-orangeMain font-bold">zallen67:~$</span> ${cmd}`, 'text-white');
-            terminalInput.value = '';
-
-            setTimeout(() => {
-                switch(cmd) {
-                    case 'help':
-                        appendLine('--- Perintah Tersedia ---', 'text-orange-400');
-                        appendLine('<span class="text-orange-400">whoami</span> : Ringkasan tentang Zallen_67');
-                        appendLine('<span class="text-orange-400">track</span> : Simulasi pelacakan OSINT');
-                        appendLine('<span class="text-orange-400">team</span> : Info S3NY4P IDK & ChuckXzn_101');
-                        appendLine('<span class="text-orange-400">clear</span> : Bersihkan layar terminal');
-                        break;
-
-                    case 'whoami':
-                        appendLine('Zallen_67 | Peretas 13 Tahun | Admin S3NY4P IDK');
-                        appendLine('Fokus: OSINT Tracking & Tanggung Jawab Keamanan.');
-                        break;
-
-                    case 'track':
-                        appendLine('[*] Memulai simulasi OSINT Tracking...', 'text-yellow-400');
-                        appendLine('[+] Lokasi & IP node berhasil ditemukan.', 'text-green-400');
-                        break;
-
-                    case 'team':
-                        appendLine('Grup: <span class="text-orangeMain font-bold">S3NY4P IDK</span>');
-                        appendLine('Teman: <span class="text-white font-bold">ChuckXzn_101</span>');
-                        break;
-
-                    case 'clear':
-                        terminalOutput.innerHTML = '';
-                        break;
-
-                    default:
-                        appendLine(`Perintah '${cmd}' gak ditemukan. Ketik <span class="text-white font-bold">'help'</span> ya.`, 'text-red-400');
                 }
             }, 150);
         }
